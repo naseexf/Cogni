@@ -1,0 +1,41 @@
+ALTER TABLE public.schedule_days
+  DROP COLUMN IF EXISTS week_label,
+  DROP COLUMN IF EXISTS date,
+  DROP COLUMN IF EXISTS day_name,
+  DROP COLUMN IF EXISTS is_weekend,
+  ADD COLUMN IF NOT EXISTS day_number integer NOT NULL DEFAULT 1,
+  ADD COLUMN IF NOT EXISTS day_type text NOT NULL DEFAULT 'Weekday',
+  ADD COLUMN IF NOT EXISTS resource_person text NOT NULL DEFAULT '';
+
+DELETE FROM public.schedule_days;
+
+INSERT INTO public.schedule_days (template_name, week_number, day_number, day_type, title, activities, resource_person, sort_order) VALUES
+('Standard One-Month Experienceship', 1, 1, 'Weekend', 'Weekend Task', ARRAY[]::text[], '', 1),
+('Standard One-Month Experienceship', 1, 2, 'Weekday', 'Project Noises Introduction', ARRAY['Interactive Session','HR Orientation'], '', 2),
+('Standard One-Month Experienceship', 1, 3, 'Weekday', 'Business & Analytics', ARRAY['Burgers Session','Data Analyst Task','Connection System'], '', 3),
+('Standard One-Month Experienceship', 1, 4, 'Weekday', 'Research & Innovation', ARRAY['Project Noises Session','R&D Activity','Idea Presentation','Group Discussion'], '', 4),
+('Standard One-Month Experienceship', 1, 5, 'Weekday', 'Industry Readiness', ARRAY['PPT Presentation','Evaluation Session','IT Job Market Analysis'], '', 5),
+('Standard One-Month Experienceship', 1, 6, 'Weekday', 'Project Management', ARRAY['Power BI Presentation','Project Management Session'], '', 6),
+('Standard One-Month Experienceship', 1, 7, 'Weekend', 'Weekend Task', ARRAY[]::text[], '', 7),
+('Standard One-Month Experienceship', 2, 8, 'Weekend', 'Weekend Task', ARRAY[]::text[], '', 1),
+('Standard One-Month Experienceship', 2, 9, 'Weekday', 'Project Evaluation', ARRAY['Project Management Evaluation','Portfolio Development Task'], '', 2),
+('Standard One-Month Experienceship', 2, 10, 'Weekday', 'Software Engineering', ARRAY['Google Meet Introduction','SSDD Task Discussion','Documentation Guidance'], '', 3),
+('Standard One-Month Experienceship', 2, 11, 'Weekday', 'Software Design', ARRAY['Orientation for New Joiners','SSDD Introduction','SSDD Task Assignment','Idea Finalization','System Architecture Design'], '', 4),
+('Standard One-Month Experienceship', 2, 12, 'Weekday', 'Architecture Review', ARRAY['SSDD Review Session','Architecture Discussion','Presentation Preparation'], '', 5),
+('Standard One-Month Experienceship', 2, 13, 'Weekday', 'Architecture Presentation', ARRAY['Architecture Presentation','Architecture Evaluation','Project Discussion'], '', 6),
+('Standard One-Month Experienceship', 2, 14, 'Weekend', 'Weekend Task', ARRAY[]::text[], '', 7),
+('Standard One-Month Experienceship', 3, 15, 'Weekend', 'Weekend Task', ARRAY[]::text[], '', 1),
+('Standard One-Month Experienceship', 3, 16, 'Weekday', 'Implementation Setup', ARRAY['SSDD Submission','Stub Introduction','Processing Dashboard Introduction','Stub Development','Processing Module Development','VMware Setup'], '', 2),
+('Standard One-Month Experienceship', 3, 17, 'Weekday', 'Cloud Computing', ARRAY['AWS Introduction','Virtual Machine (VM) Creation','Workplace Orientation','Portfolio Submission'], '', 3),
+('Standard One-Month Experienceship', 3, 18, 'Weekday', 'Cloud Integration', ARRAY['AWS Portfolio Integration','Portfolio Linking'], '', 4),
+('Standard One-Month Experienceship', 3, 19, 'Weekday', 'Artificial Intelligence', ARRAY['AI-Powered Network Anomaly Detection','Project Implementation'], '', 5),
+('Standard One-Month Experienceship', 3, 20, 'Weekday', 'AI Project Review', ARRAY['AI-Powered Network Anomaly Detection'], '', 6),
+('Standard One-Month Experienceship', 3, 21, 'Weekend', 'Weekend Task', ARRAY[]::text[], '', 7),
+('Standard One-Month Experienceship', 4, 22, 'Weekend', 'Weekend Task', ARRAY[]::text[], '', 1),
+('Standard One-Month Experienceship', 4, 23, 'Weekday', 'Application Development', ARRAY['Stub Dashboard Development','AI-Powered Network Anomaly Detection'], '', 2),
+('Standard One-Month Experienceship', 4, 24, 'Weekday', 'Database Development', ARRAY['Database Implementation in Stub Dashboard'], '', 3),
+('Standard One-Month Experienceship', 4, 25, 'Weekday', 'Automation', ARRAY['Node-RED Integration in Stub Dashboard'], '', 4),
+('Standard One-Month Experienceship', 4, 26, 'Weekday', 'IoT Development', ARRAY['Hardware Introduction & Setup','Hardware Integration & Testing','Project Validation & Final Demonstration'], '', 5),
+('Standard One-Month Experienceship', 4, 27, 'Weekday', 'Capstone Project & Final Demonstration', ARRAY['Develop an Intelligent Resume Screening and Recommendation Platform','Project Validation & Final Demonstration'], '', 6),
+('Standard One-Month Experienceship', 4, 28, 'Weekend', 'Weekend Task', ARRAY[]::text[], '', 7),
+('Standard One-Month Experienceship', 4, 29, 'Weekend', 'Weekend Task', ARRAY[]::text[], '', 8);

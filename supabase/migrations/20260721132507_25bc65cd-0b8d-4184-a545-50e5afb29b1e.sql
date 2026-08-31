@@ -1,0 +1,1 @@
+ALTER TABLE public.assets ADD COLUMN IF NOT EXISTS storage_path text, ADD COLUMN IF NOT EXISTS file_mime text, ADD COLUMN IF NOT EXISTS file_name text;

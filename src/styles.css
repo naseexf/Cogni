@@ -1,0 +1,172 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", "Inter", ui-sans-serif, sans-serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-brand-teal: var(--brand-teal);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-teal-fg: var(--brand-teal-fg);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+}
+
+:root {
+  --radius: 0.5rem;
+
+  /* CogniLearn palette — derived from the logo (teal + blue on light) */
+  --brand-teal: oklch(0.72 0.12 178);
+  --brand-blue: oklch(0.62 0.12 225);
+  --brand-teal-fg: oklch(0.99 0 0);
+
+  --background: oklch(0.985 0.004 200);
+  --foreground: oklch(0.18 0.02 230);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.02 230);
+
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.02 230);
+
+  --primary: oklch(0.62 0.12 210);
+  --primary-foreground: oklch(0.99 0 0);
+
+  --secondary: oklch(0.955 0.008 210);
+  --secondary-foreground: oklch(0.22 0.03 230);
+
+  --muted: oklch(0.955 0.008 210);
+  --muted-foreground: oklch(0.48 0.02 230);
+
+  --accent: oklch(0.94 0.03 185);
+  --accent-foreground: oklch(0.22 0.05 210);
+
+  --destructive: oklch(0.6 0.22 25);
+  --destructive-foreground: oklch(0.99 0 0);
+
+  --success: oklch(0.7 0.14 155);
+  --warning: oklch(0.78 0.16 75);
+
+  --border: oklch(0.9 0.01 220);
+  --input: oklch(0.92 0.01 220);
+  --ring: oklch(0.65 0.11 200);
+
+  /* Sidebar: deep navy with teal accent — feels like real internal tooling */
+  --sidebar: oklch(0.22 0.035 235);
+  --sidebar-foreground: oklch(0.9 0.02 210);
+  --sidebar-border: oklch(0.3 0.03 235);
+  --sidebar-accent: oklch(0.28 0.045 230);
+  --sidebar-accent-foreground: oklch(0.98 0 0);
+  --sidebar-ring: oklch(0.72 0.12 178);
+}
+
+.dark {
+  --background: oklch(0.16 0.02 230);
+  --foreground: oklch(0.95 0.01 210);
+  --card: oklch(0.2 0.025 232);
+  --card-foreground: oklch(0.95 0.01 210);
+  --popover: oklch(0.2 0.025 232);
+  --popover-foreground: oklch(0.95 0.01 210);
+  --primary: oklch(0.72 0.12 178);
+  --primary-foreground: oklch(0.16 0.02 230);
+  --secondary: oklch(0.26 0.03 232);
+  --secondary-foreground: oklch(0.95 0.01 210);
+  --muted: oklch(0.26 0.03 232);
+  --muted-foreground: oklch(0.68 0.02 210);
+  --accent: oklch(0.3 0.05 200);
+  --accent-foreground: oklch(0.95 0.01 210);
+  --destructive: oklch(0.65 0.22 25);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.3 0.02 232);
+  --input: oklch(0.28 0.02 232);
+  --ring: oklch(0.72 0.12 178);
+  --sidebar: oklch(0.15 0.02 232);
+  --sidebar-foreground: oklch(0.9 0.02 210);
+  --sidebar-border: oklch(0.25 0.02 232);
+  --sidebar-accent: oklch(0.22 0.03 232);
+  --sidebar-accent-foreground: oklch(0.98 0 0);
+  --sidebar-ring: oklch(0.72 0.12 178);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4, .font-display { font-family: var(--font-display); letter-spacing: -0.01em; }
+}
+
+@utility brand-gradient {
+  background-image: linear-gradient(135deg, var(--brand-teal), var(--brand-blue));
+}
+@utility brand-text-gradient {
+  background-image: linear-gradient(135deg, var(--brand-teal), var(--brand-blue));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Hide injected badge elements */
+#lovable-badge,
+[id^="lovable-badg"] {
+  display: none !important;
+}
+
+/* Sleek, subtle scrollbar for the sidebar nav */
+.sidebar-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in oklab, var(--sidebar-foreground) 15%, transparent) transparent;
+  scrollbar-gutter: stable;
+}
+.sidebar-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.sidebar-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.sidebar-scroll::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 9999px;
+  transition: background-color 200ms ease;
+}
+.sidebar-scroll:hover::-webkit-scrollbar-thumb,
+.sidebar-scroll:focus-within::-webkit-scrollbar-thumb {
+  background-color: color-mix(in oklab, var(--sidebar-foreground) 18%, transparent);
+}
+.sidebar-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: color-mix(in oklab, var(--sidebar-foreground) 30%, transparent);
+}
