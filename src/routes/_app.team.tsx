@@ -130,7 +130,7 @@ function AddMemberDialog({ open, onOpenChange }: any) {
   const save = async (e: React.FormEvent) => {
     e.preventDefault();
     if (f.full_name.trim().length < 2) return toast.error("Enter a name");
-    if (!f.username.trim()) return toast.error("Enter a username");
+    if (!f.username.trim()) return toast.error("Enter an email");
     if (f.password.length < 8) return toast.error("Password must be at least 8 characters");
     setBusy(true);
     try {
@@ -163,8 +163,8 @@ function AddMemberDialog({ open, onOpenChange }: any) {
         <form onSubmit={save} className="space-y-3">
           <div><Label>Full name *</Label><Input value={f.full_name} onChange={(e) => setF({ ...f, full_name: e.target.value })} required /></div>
           <div>
-            <Label>Username *</Label>
-            <Input value={f.username} onChange={(e) => setF({ ...f, username: e.target.value })} placeholder="e.g. anas" autoComplete="off" required />
+            <Label>Email *</Label>
+            <Input value={f.username} onChange={(e) => setF({ ...f, username: e.target.value })} placeholder="e.g. name@example.com" autoComplete="off" required />
           </div>
           <div>
             <Label>Temporary password *</Label>
@@ -184,7 +184,7 @@ function AddMemberDialog({ open, onOpenChange }: any) {
             <div><Label>Title / role</Label><Input value={f.title} onChange={(e) => setF({ ...f, title: e.target.value })} /></div>
             <div><Label>Phone</Label><Input value={f.phone} onChange={(e) => setF({ ...f, phone: e.target.value })} /></div>
           </div>
-          <p className="text-xs text-muted-foreground">They sign in with this username and temporary password — ask them to change it after their first sign-in.</p>
+          <p className="text-xs text-muted-foreground">They sign in with this email and temporary password — ask them to change it after their first sign-in.</p>
           <DialogFooter>
             <Button type="button" variant="ghost" onClick={() => onOpenChange(false)}>Cancel</Button>
             <Button type="submit" disabled={busy} className="brand-gradient">{busy ? "Creating…" : "Create account"}</Button>
